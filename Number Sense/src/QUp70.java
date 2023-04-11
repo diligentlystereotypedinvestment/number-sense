@@ -7,7 +7,7 @@ public class QUp70 {
 		int random = rand.nextInt(137) + 1;
 		if(random == 1 || random == 2 || random == 3 || random == 4){
 			MoreGeo.gen(questions, answers, i);
-		} else if(random == 5 || random == 6 || random == 7 || random == 8){
+		} else if(check(random,5)){
 			GreatestInt.gen(questions, answers, i);
 		} else if(check(random, 9)){
 			AdvRemainders.gen(questions, answers, i);

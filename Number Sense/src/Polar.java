@@ -10,10 +10,11 @@ public class Polar{
 	private boolean askX;
 	public static Random rand = new Random();
 
-	public Polar(Frac angle, EZ magnitude, boolean askX){
+	public Polar(Frac angle, Trig magnitude, boolean askX){
 		x = Trig.getCos(Trig.angle[Frac.indexOf(Trig.angle, angle)]);
 		y = Trig.sin[Frac.indexOf(Trig.angle, angle)];
 		this.askX = askX;
+		this.magnitude = magnitude;
 		Trig.rationalize(this.x, this.y, this.magnitude, askX);
 	}
 
@@ -48,7 +49,7 @@ public class Polar{
 		while(m == 3 || m ==6 || m == 9 || m == 7){
 			m = rand.nextInt(10) + 1;
 		}
-		Polar polar = new Polar(Trig.angle[rand.nextInt(Trig.angle.length)], new EZ(m), askX);
+		Polar polar = new Polar(Trig.angle[rand.nextInt(Trig.angle.length)], new Trig(m,1,false,false), askX);
 		if(askPolar){
 			if(askX){
 				questions.add("(" + i + ") If the polar coordinates $" + polar + "$ is $(h, k)$, what is $h$?");

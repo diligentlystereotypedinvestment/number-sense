@@ -1,0 +1,4 @@
+Number Of Tests Generated = 1
+Separate Key from Test = false
+Print Contestant ID? = false
+Number Of Contestants = 1

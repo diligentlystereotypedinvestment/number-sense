@@ -1,3 +1,4 @@
+//this class helps ensure doubles and ints print and interact properly
 public class EZ{
 	private double value;
 
