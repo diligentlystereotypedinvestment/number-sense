@@ -27,6 +27,8 @@ public class QUp80 {
 			Modulus.gen(questions,answers,i);
 		} else if(check(random, questionType)){
 			RepeatingFraction.genBase(questions,answers,i);
+		} else if(check(random,questionType)){
+			DomainAndRange.genQuestion(questions,answers,i);
 		}
 		else if (random < 137) {
 			QUp70 questions70 = new QUp70();

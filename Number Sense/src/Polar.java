@@ -13,6 +13,7 @@ public class Polar{
 	public Polar(Frac angle, Trig magnitude, boolean askX){
 		x = Trig.getCos(Trig.angle[Frac.indexOf(Trig.angle, angle)]);
 		y = Trig.sin[Frac.indexOf(Trig.angle, angle)];
+		this.angle = angle;
 		this.askX = askX;
 		this.magnitude = magnitude;
 		Trig.rationalize(this.x, this.y, this.magnitude, askX);

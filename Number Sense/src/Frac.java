@@ -41,14 +41,21 @@ public class Frac {
 		return unSimp;
 	}
 
-	public Frac add(Frac frac1, Frac frac2) {
-		int num1 = simp(frac1).getNum();
-		int num2 = simp(frac1).getNum();
-		int denom1 = simp(frac1).getDenom();
-		int denom2 = simp(frac1).getDenom();
-		return simp(new Frac(num1 * denom2 + num2 * denom1, denom1 * denom2));
+	*/
+	public static Frac fracAdd(Frac frac1, Frac frac2) {
+		return Simp.getFrac(new Frac(frac1.getNum() * frac2.getDenom() + frac2.getNum() * frac2.getDenom(), frac1.getDenom() * frac2.getDenom()));
 	}
 
+	public static Frac fracMult(Frac frac1, Frac frac2) {
+		// int num1 = simp(frac1).getNum();
+		// int num2 = simp(frac1).getNum();
+		// int denom1 = simp(frac1).getDenom();
+		// int denom2 = simp(frac1).getDenom();
+		// return simp(new Frac(num1 * num2, denom1 * denom2));
+		return Simp.getFrac(new Frac(frac1.getNum() * frac2.getNum(), frac1.getDenom() * frac2.getDenom()));
+	}
+
+	/*
 	public Frac sub(Frac frac1, Frac frac2) {
 		int num1 = simp(frac1).getNum();
 		int num2 = simp(frac1).getNum();
@@ -239,7 +246,8 @@ public class Frac {
 			return integer;
 		}
 	}
-	
+
+	@Override
 	public boolean equals(Object other){
 		if(other == this){
 			return true;
@@ -250,8 +258,9 @@ public class Frac {
 		if(!(other instanceof Frac)) {
 			return false;
 		}
-		Frac o = (Frac) other;
-		return o.getNum() == num && o.getDenom() == denom;
+		Frac o = Simp.getFrac((Frac) other);
+		Frac simplified = Simp.getFrac(this);
+		return o.getNum() == simplified.getNum() && o.getDenom() == simplified.getDenom();
 	}
 
 	public static int indexOf(Frac[] array, Frac fraction){

@@ -1,41 +1,40 @@
 public class Trig{
 	public static final Frac[] angle = {
- new Frac("0/1"),
- new Frac("1/6"),
- new Frac("1/3"),
- new Frac("1/4"),
- new Frac("1/2"),
- new Frac("2/3"),
- new Frac("5/6"),
- new Frac("1/1"),
- new Frac("3/4"),
- new Frac("7/6"),
- new Frac("4/3"),
- new Frac("3/2"),
- new Frac("5/4"),
- new Frac("11/6"),
- new Frac("5/3"),
- new Frac("2/1"),
- new Frac("7/4"),
- new Frac("2/1")};
+	    new Frac("0/1"),
+	    new Frac("1/6"),
+	    new Frac("1/4"),
+	    new Frac("1/3"),
+	    new Frac("1/2"),
+	    new Frac("2/3"),
+	    new Frac("3/4"),
+	    new Frac("5/6"),
+	    new Frac("1/1"),
+	    new Frac("7/6"),
+	    new Frac("5/4"),
+	    new Frac("4/3"),
+	    new Frac("3/2"),
+	    new Frac("5/3"),
+	    new Frac("7/4"),
+	    new Frac("11/6"),
+	    new Frac("2/1")};
 	public static final Trig[] sin = {
- new Trig(0,1, false, false),//0/1
- new Trig(1,2, false, false),//1/6
- new Trig(1,2, false, true),//1/4
- new Trig(1,2, true, false),//1/3
- new Trig(1,1, false, false),//1/2
- new Trig(1,2, true, false),//2/3
- new Trig(1,2, false, true),//3/4
- new Trig(1,2, false, false),//5/6
- new Trig(0,1, false, false),//1/1
- new Trig(-1,2, false, false),//7/6
- new Trig(-1,2, false, true),//5/4
- new Trig(-1,2, true, false),//4/3
- new Trig(-1,1, false, false),//3/2
- new Trig(-1,2, true, false),//5/3
- new Trig(-1,2, false, false),//7/4
- new Trig(-1,2, false, false),//11/6
- new Trig(-0,1, false, false)};//2/1
+	    new Trig(0,1, false, false),//0/1
+	    new Trig(1,2, false, false),//1/6
+	    new Trig(1,2, false, true),//1/4
+	    new Trig(1,2, true, false),//1/3
+	    new Trig(1,1, false, false),//1/2
+	    new Trig(1,2, true, false),//2/3
+	    new Trig(1,2, false, true),//3/4
+	    new Trig(1,2, false, false),//5/6
+	    new Trig(0,1, false, false),//1/1
+	    new Trig(-1,2, false, false),//7/6
+	    new Trig(-1,2, false, true),//5/4
+	    new Trig(-1,2, true, false),//4/3
+	    new Trig(-1,1, false, false),//3/2
+	    new Trig(-1,2, true, false),//5/3
+	    new Trig(-1,2, false, false),//7/4
+	    new Trig(-1,2, false, false),//11/6
+	    new Trig(0,1, false, false)};//2/1
 	public Frac magnitude;
 	public boolean isRoot3;
 	public boolean isRoot2;
@@ -47,10 +46,8 @@ public class Trig{
 	}
 
 	public static Trig getCos(Frac angleMeasure){
-		int index = Frac.indexOf(angle, angleMeasure) + 1;
-		if(index == angle.length + 1){
-			index = 0;
-		}
+		Frac equivSinAngle = Frac.fracAdd(angleMeasure, new Frac(-1,2));
+		int index = Frac.indexOf(angle, equivSinAngle);
 		return sin[index];
 	}
 
@@ -111,4 +108,17 @@ public class Trig{
 		}
 	}
 
+	@Override
+	public boolean equals(Object o){
+	    if( (o == this)){
+	        return true;
+	    }
+
+	    if(o instanceof Trig){
+		Trig t = (Trig) o;
+	        return this.magnitude.equals(t.magnitude) && (this.isRoot3 == t.isRoot3) && (this.isRoot2 == t.isRoot2);
+	    }
+
+	    return false;
+	}
 }

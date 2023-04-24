@@ -385,7 +385,7 @@ public class QUp20 {
 			} while(num3 == num2 || num3 == num1);
 			String printmess = "";
 			if (choose == 1) { // gcf of two
-				printmess = ("(" + i + ") The GCF of " + num1 + " and " + num2 + " is");
+				printmess = ("(" + i + ") The GCD of " + num1 + " and " + num2 + " is");
 				answers.add(String.valueOf(LCMandGCF.GCF(num1, num2)));
 			}
 			if (choose == 2) { // lcm of two
@@ -393,7 +393,7 @@ public class QUp20 {
 				answers.add(String.valueOf(LCMandGCF.LCM(num1, num2)));
 			}
 			if (choose == 3) { // gcf of three
-				printmess = ("(" + i + ") The GCF of " + num1 + ", " + num2 + ", and " + num3 + " is");
+				printmess = ("(" + i + ") The GCD of " + num1 + ", " + num2 + ", and " + num3 + " is");
 				answers.add(String.valueOf(LCMandGCF.GCF(num1, num2, num3)));
 			}
 			if (choose == 4) { // lcm of three

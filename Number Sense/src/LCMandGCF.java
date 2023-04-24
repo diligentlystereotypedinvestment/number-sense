@@ -1,10 +1,10 @@
 import java.util.Arrays;
 
 public class LCMandGCF {
-	
+
 	public static int GCF(int... nums) {
 		if (nums.length == 0) {
-			System.out.println(nums.length + " is an invalid number of arguments for function GCF");
+			System.out.println(nums.length + " is an invalid number of arguments for function GCD");
 			return -1;
 		} else {
 			int[] numsTemp = Arrays.copyOf(nums, nums.length);

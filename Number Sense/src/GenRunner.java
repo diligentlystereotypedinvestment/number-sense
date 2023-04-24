@@ -25,7 +25,6 @@ public class GenRunner {
 	public static final ArrayList<QuestionType> under80 = new ArrayList<QuestionType>();
 
 	public static void setup() {
-		Unit.init();
 		under20.add(new MeanMedianMode());
 		under20.add(new Adding());
 
@@ -95,9 +94,9 @@ public class GenRunner {
 		System.out.println("\n\n\\end{document}");
 	}
 */
-	
+
 	public static void config() throws FileNotFoundException {
-		Scanner conf = new Scanner(new File("../config.txt"));
+		Scanner conf = new Scanner(new File("../../config.txt"));
 		numOfTests = Integer.valueOf(getData(conf.nextLine()));
 		separateKey = Boolean.valueOf(getData(conf.nextLine()));
 		contestantNumIncluded = Boolean.valueOf(getData(conf.nextLine()));
@@ -106,7 +105,7 @@ public class GenRunner {
 		}
 		conf.close();
 	}
-	
+
 	public static String getData(String line) {
 		return line.substring(line.indexOf('=')+2);
 	}
@@ -114,7 +113,8 @@ public class GenRunner {
 	public static void main(String[] args) throws IOException {
 		//setup();
 		config();
-		
+		Unit.init();
+
 		//create the questions and answers
 		ArrayList<String> questions = new ArrayList<String>(), answers = new ArrayList<String>();
 		for (int i = 1; i <= 80; i++) {
@@ -161,7 +161,7 @@ public class GenRunner {
 		}
 		questions.trimToSize();
 		answers.trimToSize();
-		
+
 		//cobbling together the contents of the test
 		String contents = "";
 		for (String e : questions) {
@@ -176,11 +176,11 @@ public class GenRunner {
 			contents += "}\n\n";
 		}
 		contents += "\\end{flushleft}\\end{multicols}";
-		
+
 		//for naming the files
 		Date dNow = new Date( );
 		SimpleDateFormat ft = new SimpleDateFormat ("yyyy.MM.dd");
-	      
+
 		//outputting the test
       	if(separateKey) {
       		FileWriter key = new FileWriter("NS.KEY" + ft.format(dNow) + ".tex", true);
@@ -214,7 +214,7 @@ public class GenRunner {
 			test.write(intro + contents + "\\end{document}");
 			test.close();
 		}
-		
+
 		//System.out.print("\\documentclass{article}\n\\usepackage[margin=0.5in]{geometry}\n\\usepackage{microtype}\n\\usepackage{amsmath}\n\\usepackage{setspace}\n\\usepackage{multicol}\n%\\newcommand\\textbox[1]{\n%\\parbox{.333\\textwidth}{#1}%\n%}\n\\pagenumbering{gobble}\n\\begin{document}\n\\begin{center}\n\\textbf{The University Interscholastic League\\\\\nNumber Sense Test $\\cdot$ HS District $\\cdot$ \\date}\n\\end{center}\n\\hfill Final \\textunderscore\\textunderscore\\textunderscore\\textunderscore \\textunderscore\\textunderscore\\textunderscore\\textunderscore\n\\textunderscore\\textunderscore\\textunderscore\\textunderscore\n\\textunderscore\\textunderscore\\textunderscore\\textunderscore\\textunderscore\\textunderscore\n\n\\noindent "
 				//+ "\\textbf{Contestant's Number}\\textunderscore\\textunderscore\\textunderscore\\textunderscore\\hfill  2nd \\textunderscore\\textunderscore\\textunderscore\\textunderscore\\textunderscore\\textunderscore\\textunderscore\\textunderscore\n\\textunderscore\\textunderscore\\textunderscore\\textunderscore\n\\textunderscore\\textunderscore\\textunderscore\\textunderscore\\textunderscore\\textunderscore\n\n\\noindent   .\\hfill  1st \\textunderscore\\textunderscore\\textunderscore\\textunderscore \\textunderscore\\textunderscore\\textunderscore\\textunderscore\n\\textunderscore\\textunderscore\\textunderscore\\textunderscore\n\\textunderscore\\textunderscore\\textunderscore\\textunderscore\\textunderscore\\textunderscore\n\n\\noindent \\textbf{Read directions carefully} \\hspace{.45in} {\\textbf{DO NOT UNFOLD THIS SHEET} }\\hfill{\\textbf{Score\\hspace {.05in} Initials}\n\n\\noindent \\textbf{before beginning test} \\hspace{1in}{\\textbf{UNTIL TOLD TO BEGIN}}\\hfill{}\n\n\n\\textbf{Directions}:  Do not turn this page until the person conducting this test gives the signal to begin. This is a ten-minute test. There are 80 problems. Solve accurately and quickly as many as you can in the order in which they appear. ALL  PROBLEMS  ARE  TO  BE SOLVED MENTALLY.  Make  no  calculations with paper and  pencil.  Write only the answer  in the space provided at the end of each problem.  Problems marked with a  ( * )  require approximate integral answers;  any answer to a starred problem  that is within five percent of the exact answer will be scored correct; all other problems require exact answers.\n\n\n\\textbf{The person conducting this contest should explain these directions to the contestants.}\n\n\\center{\\textbf{STOP -- WAIT FOR SIGNAL!}}\n\n\n\\setstretch{2.1}\n\\begin{multicols}{2}\n\\begin{flushleft}");
 
