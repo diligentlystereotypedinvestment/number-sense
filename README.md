@@ -136,7 +136,7 @@ Answers to Estimation Problems may be slightly off
 
 # Problems 71 -80
 
-1) Function domains and ranges
+~~1) Function domains and ranges~~
 
 2) Modular Arithmetic
 

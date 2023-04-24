@@ -88,7 +88,7 @@ public enum Unit {
 		AREA_UNITS.clear();
 		VOLUME_UNITS.clear();
 		SPEED_UNITS.clear();
-		for (Unit unit : Unit.values()) {
+		for (Unit unit : values()) {
 			switch (unit.type) {
 			case 1:
 				LENGTH_UNITS.add(unit);
